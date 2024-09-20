@@ -1,8 +1,6 @@
 
 # Farbe
 
-[![Farbe on nuget.org](https://img.shields.io/nuget/v/Farbe)](https://www.nuget.org/packages/Farbe/)
-[![Farbe on fuget.org](https://www.fuget.org/packages/Farbe/badge.svg)](https://www.fuget.org/packages/Farbe)
 ![code size](https://img.shields.io/github/languages/code-size/goswinr/Farbe.svg)
 [![license](https://img.shields.io/github/license/goswinr/Farbe)](LICENSE)
 

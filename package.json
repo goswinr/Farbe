@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "checkTS": "tsc --target es2022 Farbe.fs.ts",
+    "ts": "dotnet fable --lang typescript --silent --run npm run checkTS"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  }
+}
