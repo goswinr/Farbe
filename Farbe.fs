@@ -11,9 +11,9 @@ module internal ColorUtil =
 
     let Rand = new Random()
 
-    let mutable lastHue = 0.0
+    let mutable private lastHue = 0.0
 
-    let mutable lumUp = false
+    let mutable private lumUp = false
 
     /// Generates a Random color with high saturation probability, excluding yellow colors
     /// These are ideal for layer color in Rhino3d CAD app
@@ -152,9 +152,9 @@ type Farbe =
         // from http://stackoverflow.com/questions/2942/hsl-in-net
         // or http://bobpowell.net/RGBHSB.aspx
         // allow some numerical error:
-        if not (-0.01 <. hue        .< 1.01) then ArgumentOutOfRangeException.Raise "Farbe.createFromHSL: H is bigger than 1.0 or smaller than 0.0: %f" hue
-        if not (-0.01 <. saturation .< 1.01) then ArgumentOutOfRangeException.Raise "Farbe.createFromHSL: S is bigger than 1.0 or smaller than 0.0: %f" saturation
-        if not (-0.01 <. luminance  .< 1.01) then ArgumentOutOfRangeException.Raise "Farbe.createFromHSL: L is bigger than 1.0 or smaller than 0.0: %f" luminance
+        if not (-0.01 <. hue        .< 1.01) then ArgumentOutOfRangeException.Raise "Farbe.fromHSL: H is bigger than 1.0 or smaller than 0.0: %f" hue
+        if not (-0.01 <. saturation .< 1.01) then ArgumentOutOfRangeException.Raise "Farbe.fromHSL: S is bigger than 1.0 or smaller than 0.0: %f" saturation
+        if not (-0.01 <. luminance  .< 1.01) then ArgumentOutOfRangeException.Raise "Farbe.fromHSL: L is bigger than 1.0 or smaller than 0.0: %f" luminance
         let H = clamp01 hue
         let S = clamp01 saturation
         let L = clamp01 luminance
@@ -176,7 +176,7 @@ type Farbe =
                     | 3 -> m,   mid2,    v
                     | 4 -> mid1,   m,    v
                     | 5 -> v,      m, mid2
-                    | x -> ArgumentException.RaiseBase "Farbe.createFromHSL: Error in internal HLS Transform, sextant is %d at Hue=%g, Saturation=%g, Luminance=%g" x H S L
+                    | x -> ArgumentException.RaiseBase "Farbe.fromHSL: Error in internal HLS Transform, sextant is %d at Hue=%g, Saturation=%g, Luminance=%g" x H S L
             else
                 L,L,L // default to gray value
         Farbe (byte(round(255.* r)) ,  byte(round(255.* g)) , byte(round(255.* b)) )
@@ -253,4 +253,7 @@ type Farbe =
         let v = clamp01 v
         let h,s,l = Farbe.toHSL c
         Farbe.fromHSL (h,s, l - l * v)
+
+
+    static member tryParse
 
