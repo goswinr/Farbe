@@ -108,7 +108,7 @@ type Farbe =
         let g = ( ^T : (member G : _) c)
         let b = ( ^T : (member B : _) c)
         try Farbe(byte r, byte g, byte b)
-        with e -> ArgumentException.RaiseBase "Farbe.ofRGB: %O could not be converted to a Farbe:\r\n%A" c e
+        with e -> ArgumentException.RaiseBase "Farbe.ofRGB: %O could not be converted to a Farbe:%s%A" c Environment.NewLine e
 
     /// Compares to another color only by Red, Green and Blue values ignoring other fields such as IsNamedColor in System.Drawing.Color
     /// Accepts any two type that have a R, G and B (UPPERCASE) member that can be converted to a int.
@@ -124,7 +124,7 @@ type Farbe =
         try
             int ra = int rb && int ga = int gb && int ba = int bb
         with e ->
-            ArgumentException.RaiseBase "Farbe.areSameRGB: %O or %O could not be converted to a Farbe:\r\n%A" a b e
+            ArgumentException.RaiseBase "Farbe.areSameRGB: %O or %O could not be converted to a Farbe:%s%A" a b Environment.NewLine e
 
     /// Compares to another color only by Alpha, Red, Green and Blue values ignoring other fields such as IsNamedColor in System.Drawing.Color
     /// Accepts any two type that have a A, R, G and B (UPPERCASE) member that can be converted to a int.
@@ -142,7 +142,7 @@ type Farbe =
         try
             int aa = int ab && int ra = int rb && int ga = int gb && int ba = int bb
         with e ->
-            ArgumentException.RaiseBase "Farbe.areSameARGB: %O or %O could not be converted to a Farbe:\r\n%A" a b e
+            ArgumentException.RaiseBase "Farbe.areSameARGB: %O or %O could not be converted to a Farbe:%s%A" a b Environment.NewLine e
 
 
     /// Given Hue, Saturation, Luminance in range of 0.0 to 1.0, returns a Farbe.Color
