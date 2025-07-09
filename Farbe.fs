@@ -42,22 +42,34 @@ module internal ColorUtil =
             lastHue, s, l
 
 
-    /// Point must be at middle of expression: like this: min <=. x .<= max
+    /// <summary>
+    /// Point must be at middle of expression: like this: <c>min &lt;=. x .&lt;= max</c>
+    /// </summary>
     let inline ( <=.) left middle = (left <= middle, middle)
 
-    /// Point must be at middle of expression: like this: min <. x .< max
+    /// <summary>
+    /// Point must be at middle of expression: like this: <c>min &lt;. x .&lt; max</c>
+    /// </summary>
     let inline ( <. ) left middle = (left < middle, middle)
 
-    /// Point must be at middle of expression: like this: min <. x .< max
+    /// <summary>
+    /// Point must be at middle of expression: like this: <c>min &lt;. x .&lt; max</c>
+    /// </summary>
     let inline ( .< ) (leftResult, middle) right = leftResult && (middle < right)
 
-    /// Point must be at middle of expression: like this: min <=. x .<= max
+    /// <summary>
+    /// Point must be at middle of expression: like this: <c>min &lt;=. x .&lt;= max</c>
+    /// </summary>
     let inline ( .<= ) (leftResult, middle) right = leftResult && (middle <= right)
 
-    /// For inner expressions: like this: min <. x .<. y .< max
+    /// <summary>
+    /// For inner expressions: like this: <c>min &lt;. x .&lt;. y .&lt; max</c>
+    /// </summary>
     let inline ( .<. ) (leftResult, middle) right = leftResult && (middle < right), right
 
-    /// for inner expressions: like this: min <. x .<. y .< max
+    /// <summary>
+    /// For inner expressions: like this: <c>min &lt;=. x .&lt;=. y .&lt;= max</c>
+    /// </summary>
     let inline ( .<=. ) (leftResult, middle) right = leftResult && (middle <= right), right
 
     type ArgumentException with
