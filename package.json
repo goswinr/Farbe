@@ -5,6 +5,7 @@
     "ts": "dotnet fable --lang typescript --silent --run npm run checkTS"
   },
   "devDependencies": {
-    "typescript": "^5.6.2"
+    "mocha": "12.0.0-beta-9.3",
+    "typescript": "^6.0.3"
   }
 }
