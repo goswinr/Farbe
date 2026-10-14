@@ -31,6 +31,7 @@
     <!-- WarningLevel 3 is default , see https://github.com/dsyme/fsharp-presentations/blob/master/design-notes/off-by-default-warnings.md -->
     <Configuration>Release</Configuration>
   </PropertyGroup>
+
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
@@ -47,10 +48,11 @@
     <!--using  snupkg the readme does not pack https://github.com/NuGet/Home/issues/10791 -->
     <PackageTags>fsharp color colors</PackageTags>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Update="FSharp.Core" Version="6.0.7" />
     <!-- otherwise the minimum FSharp.Core version would be forced by the SDK used for building it. this would be needlessly too high-->
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <!-- SourceLink is built into the .NET 8+ SDK, no Microsoft.SourceLink.GitHub package needed -->
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
